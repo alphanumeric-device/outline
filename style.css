@@ -1,0 +1,187 @@
+html {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 3s ease-in;
+  transition: background-color 3s ease-in;
+}
+
+body {
+
+  background-color: black;
+  transition: opacity 3s ease-in;
+  transition: background-color 3s ease-in;
+}
+
+.htmlIntro {
+  opacity: 1;
+  background-color: white;
+}
+
+.separate_U6CL2RP6B_S5MD3X {
+  position: relative;
+  margin-left: 20px;
+}
+
+/*                                          */
+
+#logo {
+  /* make a nice square within the top_nav class bar*/
+  position: relative;
+  left: 10px;
+  z-index: 10;
+  height: 60px;
+  top: 5%;
+
+}
+
+#top_nav {
+  
+  height: 20%;
+  width: 100%;
+  position: sticky;
+  padding: 10px;
+  display: inline-flex;
+  /* Added flex container */
+  align-items: center;
+  /* Vertically center items */
+  left: 20px;
+  top: 1%;
+}
+
+#top_nav-layer-1 {
+  background-color: #1b1b1b;
+  height: 50px;
+  width: 100%;
+  position: relative;
+  padding: 0px;
+}
+
+.top_nav-item {
+  position: relative;
+  min-width: 100px;
+  width: fit-content;
+  justify-content: space-evenly;
+
+}
+
+.top_nav-item :hover {
+  height: 100%;
+ 
+
+}
+
+/* Removed height: 100% and display: inline-flex from .top_nav-item */
+/* Added line-height and vertical-align properties for text vertical alignment */
+.top_nav-item a {
+
+  padding: 20px 30px 10px;
+  line-height: 50px;
+  /* Match with the height of #top_nav */
+  vertical-align: middle;
+  color: #919191;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.top_nav-item a:hover {
+  /* background-color: #ffcd00; */
+  color: white;
+  height: 100%;
+}
+
+
+#W4M_M5OQ1IV1WN5KM8LB5RD9L2E_F3Q_J2WA5FL1GO8RY6DV5J_R9OQ2BT7QD6C {
+  position: absolute;
+}
+
+#side_nav {
+  position: fixed;
+  transition: left 1.5s, width 1.5s;
+  background-color: #dc4401;
+  height: 100%;
+  width: 20px;
+  top: 0;
+
+
+  left: 0;
+  /*padding: 10px;*/
+  z-index: 1100;
+
+
+}
+
+.side_nav-item {
+  display: none;
+}
+
+#side_nav-button {
+  position: relative;
+  left: 0px;
+  /* background-image: url("/images/Poochy.png"); */
+
+  height: 50px;
+  width: 20px;
+  background-color: #f3a309;
+  z-index: 99903;
+  transition: left 1.5s, width 1.5s;
+}
+
+#side_nav.active {
+  width: 1000px;
+  left: 0px;
+
+  #side_nav-button {
+    left: 0;
+    width: 980px;
+
+  }
+
+  .side_nav-item {
+    /*make appear on timer*/
+    display: block;
+  }
+
+}
+
+.side_nav-item {
+
+  position: relative;
+  left: 5px;
+  min-width: 100px;
+  width: fit-content;
+  justify-content: space-evenly;
+
+}
+
+.side_nav-item a {
+  padding: 20px 30px 20px;
+  line-height: 50px;
+  /* Match with the height of #top_nav */
+  vertical-align: middle;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.side_nav-item a:hover {
+  background-color: #ffcd00;
+  height: 100%;
+}
+
+
+@media only screen and (max-width: 600px){
+  .htmlIntro {
+    opacity: 1;
+    background-color: #171f40;
+  }
+}
+  @media screen and (max-width: 736px), screen and (max-height: 640px) {
+  }
+
+
+  
