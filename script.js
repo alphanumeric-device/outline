@@ -1,4 +1,4 @@
-import links from "/links.js";
+import links from "/outline/links.js";
 document.documentElement.classList.add('htmlIntro');
 document.body.classList.add('htmlIntro');
 var screenWidth = window.innerWidth;
