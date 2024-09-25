@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    canvas {
+      max-width: 100%;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Train</h1>
+  <canvas id="priceChart"></canvas>
+  <p id="errinfo"></p><br>
+  <p id="resultinfo"></p>
+  <script>
+    try {
+      // Define models
+      const model = tf.sequential();
+      model.add(tf.layers.dense({ units: 10, activation: 'relu', inputShape: [1] }));
+      model.add(tf.layers.dense({ units: 1 }));
+      model.compile({ loss: 'meanSquaredError', optimizer: 'adam' });
+
+      const model2 = tf.sequential();
+      model2.add(tf.layers.dense({ units: 10, activation: 'relu', inputShape: [1] }));
+      model2.add(tf.layers.dense({ units: 3, activation: 'relu' }));
+      model2.add(tf.layers.dense({ units: 1 }));
+      model2.compile({ loss: 'meanSquaredError', optimizer: 'adam' });
+
+      const model3 = tf.sequential();
+      model3.add(tf.layers.dense({ units: 10, activation: 'relu', inputShape: [1] }));
+      model3.add(tf.layers.dense({ units: 3, activation: 'relu' }));
+      model3.add(tf.layers.dense({ units: 1 }));
+      model3.compile({ loss: 'meanSquaredError', optimizer: 'adam' });
+
+      // Create training data
+      const xsArray = [], ysArray = [], xsArray2 = [], ysArray2 = [];
+      const actualData = [], actualData2 = [];
+      const predictedData = [], predictedData2 = [];
+        
+      const xsArray3 = [], ysArray3 = [], xsArray4 = [], ysArray4 = [];
+      const actualData3 = [], actualData4 = [];
+      const predictedData3 = [], predictedData4 = [];
+        
+      const xsArray5 = [], ysArray5 = [], xsArray6 = [], ysArray6 = [];
+      const actualData5 = [], actualData6 = [];
+      const predictedData5 = [], predictedData6 = [];
+        
+      const xsArray7 = [], ysArray7 = [], xsArray8 = [], ysArray8 = [];
+      const actualData7 = [], actualData8 = [];
+      const predictedData7 = [], predictedData8 = [];
+        
+      for (let i = 0; i < 30; i++) {
+        xsArray.push([i]);
+        ysArray.push([i ** 2]);  // Squared values for the first model
+        xsArray2.push([i]);
+        ysArray2.push([i ** 2]);  // Cubed values for the second model
+        xsArray3.push([i]);
+        ysArray3.push([i ** 2]);  // Cubed values for the second model
+        xsArray4.push([i]);
+        ysArray4.push([i ** 2]);  // Squared values for the first model
+        xsArray5.push([i]);
+        ysArray5.push([i ** 2]);  // Cubed values for the second model
+        xsArray6.push([i]);
+        ysArray6.push([i ** 2]);  // Cubed values for the second model
+        xsArray7.push([i]);
+        ysArray7.push([i ** 2]);  // Cubed values for the second model
+      }
+
+      const xs = tf.tensor2d(xsArray, [xsArray.length, 1]);
+      const ys = tf.tensor2d(ysArray, [ysArray.length, 1]);
+      const xs2 = tf.tensor2d(xsArray2, [xsArray2.length, 1]);
+      const ys2 = tf.tensor2d(ysArray2, [ysArray2.length, 1]);
+      const xs3 = tf.tensor2d(xsArray3, [xsArray3.length, 1]);
+      const ys3 = tf.tensor2d(ysArray3, [ysArray3.length, 1]);
+      const xs4 = tf.tensor2d(xsArray4, [xsArray4.length, 1]);
+      const ys4 = tf.tensor2d(ysArray4, [ysArray4.length, 1]);
+      const xs5 = tf.tensor2d(xsArray5, [xsArray5.length, 1]);
+      const ys5 = tf.tensor2d(ysArray5, [ysArray5.length, 1]);
+      const xs6 = tf.tensor2d(xsArray6, [xsArray6.length, 1]);
+      const ys6 = tf.tensor2d(ysArray6, [ysArray6.length, 1]);
+      const xs7 = tf.tensor2d(xsArray7, [xsArray7.length, 1]);
+      const ys7 = tf.tensor2d(ysArray7, [ysArray7.length, 1]);
+
+      // Initialize chart
+      const chartData = {
+        datasets: [
+          { 
+            label: 'Actual Data', 
+            data: actualData, 
+            backgroundColor: 'rgba(255, 99, 132, 0.6)', 
+            borderColor: 'rgba(255, 99, 132, 1)', 
+            borderWidth: 1, 
+            pointStyle: 'circle', 
+            type: 'scatter' // Scatter plot for actual data
+          },
+          { 
+            label: 'Model 1', 
+            data: predictedData, 
+            backgroundColor: 'rgba(54, 162, 235, 0.6)', 
+            borderColor: 'rgba(54, 162, 235, 1)', 
+            borderWidth: 2, 
+            pointStyle: 'circle', 
+            type: 'line',  // Line for model predictions
+            fill: false, 
+            tension: 0.4,  // Smooth curve
+            cubicInterpolationMode: 'monotone'  // Ensures smoothness
+          },
+          { 
+            label: 'Model 2', 
+            data: predictedData2, 
+            backgroundColor: 'rgba(75, 192, 192, 0.6)', 
+            borderColor: 'rgba(75, 192, 192, 1)', 
+            borderWidth: 2, 
+            pointStyle: 'circle', 
+            type: 'line', 
+            fill: false, 
+            tension: 0.4,  // Smooth curve
+            cubicInterpolationMode: 'monotone' 
+          },
+          { 
+            label: 'Model 3', 
+            data: predictedData3, 
+            backgroundColor: 'rgba(153, 102, 255, 0.6)', 
+            borderColor: 'rgba(153, 102, 255, 1)', 
+            borderWidth: 2, 
+            pointStyle: 'circle', 
+            type: 'line', 
+            fill: false, 
+            tension: 0.4,  // Smooth curve
+            cubicInterpolationMode: 'monotone' 
+          }
+        ]
+      };
+
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      const chartNOW = new Chart(ctx, {
+        type: 'scatter',
+        data: chartData,
+        options: {
+          scales: {
+            x: { title: { display: true, text: 'X' }, beginAtZero: true },
+            y: { title: { display: true, text: 'Y' }, beginAtZero: true }
+          }
+        }
+      });
+
+      // Train the models and update chart
+      model.fit(xs, ys, { epochs: 1000 }).then(() => {
+        const testXsArray = [];
+        for (let i = 30; i < 40; i++) testXsArray.push([i]);
+        const testXs = tf.tensor2d(testXsArray);
+        const predictions = model.predict(testXs).arraySync();
+
+        for (let i = 30; i < 40; i++) actualData.push({ x: i, y: i ** 2 });
+        for (let i = 0; i < predictions.length; i++) predictedData.push({ x: 30 + i, y: predictions[i][0] });
+
+        resultinfo.innerHTML += predictions + "<br>";
+        chartNOW.update();  // Update chart after predictions are added
+      });
+
+      model2.fit(xs2, ys2, { epochs: 1000 }).then(() => {
+        const testXsArray2 = [];
+        for (let i = 30; i < 40; i++) testXsArray2.push([i]);
+        const testXs2 = tf.tensor2d(testXsArray2);
+        const predictions2 = model2.predict(testXs2).arraySync();
+
+        for (let i = 30; i < 40; i++) actualData2.push({ x: i, y: i ** 2 });
+        for (let i = 0; i < predictions2.length; i++) predictedData2.push({ x: 30 + i, y: predictions2[i][0] });
+
+        resultinfo.innerHTML += predictions2 + "<br>";
+        chartNOW.update();  // Update chart after the second set of predictions
+      });
+        
+      model3.fit(xs3, ys3, { epochs: 1000 }).then(() => {
+        const testXsArray3 = [];
+        for (let i = 30; i < 40; i++) testXsArray3.push([i]);
+        const testXs3 = tf.tensor2d(testXsArray3);
+        const predictions3 = model3.predict(testXs3).arraySync();
+
+        for (let i = 30; i < 40; i++) actualData3.push({ x: i, y: i ** 2 });
+        for (let i = 0; i < predictions3.length; i++) predictedData3.push({ x: 30 + i, y: predictions3[i][0] });
+
+        resultinfo.innerHTML += predictions3 + "<br>";
+        chartNOW.update();  // Update chart after the third set of predictions
+      });
+
+    } catch (err) {
+      errinfo.innerHTML = err;
+    }
+  </script>
+</body>
+</html>
