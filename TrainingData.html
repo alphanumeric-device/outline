@@ -16,25 +16,38 @@
 <body>
   <h1>Train</h1>
   <canvas id="priceChart"></canvas>
+ Model 1 Neural Network Layer 1 Neuron Count <input id = "m1_NNL-1_count" type = "number"><br>
+  Model 1 Neural Network Layer 2 Neuron Count <input id = "m1_NNL-2_count"type = "number"><br>
+  
+ Model 2 Neural Network Layer 1 Neuron Count <input id = "m2_NNL-1_count" type = "number"><br>
+ Model 2 Neural Network Layer 2 Neuron Count <input id = "m2_NNL-2_count" type = "number"><br>
+
+  Model 3 Neural Network Layer 1 Neuron Count <input id = "m3_NNL-1_count" type = "number"><br>
+ Model 3 Neural Network Layer 2 Neuron Count <input id = "m3_NNL-2_count" type = "number"><br>
+
+  Start <input id = "sub" type = 'submit'>
+  
   <p id="errinfo"></p><br>
   <p id="resultinfo"></p>
   <script>
+    document.getElementById('sub').onclick = function(){
     try {
       // Define models
       const model = tf.sequential();
-      model.add(tf.layers.dense({ units: 10, activation: 'relu', inputShape: [1] }));
+      model.add(tf.layers.dense({ units: document.getElementById("m1_NNL-1_count").value, activation: 'relu', inputShape: [1] }));
+      model.add(tf.layers.dense({ units: document.getElementById("m1_NNL-2_count").value, activation: 'relu' }));
       model.add(tf.layers.dense({ units: 1 }));
       model.compile({ loss: 'meanSquaredError', optimizer: 'adam' });
 
       const model2 = tf.sequential();
-      model2.add(tf.layers.dense({ units: 10, activation: 'relu', inputShape: [1] }));
-      model2.add(tf.layers.dense({ units: 3, activation: 'relu' }));
+      model2.add(tf.layers.dense({ units: document.getElementById("m2_NNL-1_count").value, activation: 'relu', inputShape: [1] }));
+      model2.add(tf.layers.dense({ units: document.getElementById("m2_NNL-2_count").value, activation: 'relu' }));
       model2.add(tf.layers.dense({ units: 1 }));
       model2.compile({ loss: 'meanSquaredError', optimizer: 'adam' });
 
       const model3 = tf.sequential();
-      model3.add(tf.layers.dense({ units: 10, activation: 'relu', inputShape: [1] }));
-      model3.add(tf.layers.dense({ units: 3, activation: 'relu' }));
+      model3.add(tf.layers.dense({ units: document.getElementById("m3_NNL-1_count").value, activation: 'relu', inputShape: [1] }));
+      model3.add(tf.layers.dense({ units: document.getElementById("m3_NNL-2_count").value, activation: 'relu' }));
       model3.add(tf.layers.dense({ units: 1 }));
       model3.compile({ loss: 'meanSquaredError', optimizer: 'adam' });
 
@@ -192,6 +205,7 @@
 
     } catch (err) {
       errinfo.innerHTML = err;
+    }
     }
   </script>
 </body>
