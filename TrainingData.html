@@ -71,11 +71,11 @@
         const xsArray3 = [], ysArray3 = [];
         const actualData3 = [], predictedData3 = [];
         
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 100; i++) {
           xsArray.push([i]);
-          ysArray.push([i ** 2]);  // Squared values for the first model
+          ysArray.push([i ** i]);  // Squared values for the first model
           xsArray2.push([i]);
-          ysArray2.push([i ** 2]);  // Squared values for the second model
+          ysArray2.push([i ** i]);  // Squared values for the second model
         }
 
         const xs = tf.tensor2d(xsArray, [xsArray.length, 1]);
@@ -149,12 +149,12 @@
         // Train the models and update chart
         model.fit(xs, ys, { epochs: parseInt(document.getElementById("m1_NN-E_Count").value) }).then(() => {
           const testXsArray = [];
-          for (let i = 30; i < 40; i++) testXsArray.push([i]);
+          for (let i = 100; i < 1000; i++) testXsArray.push([i]);
           const testXs = tf.tensor2d(testXsArray);
           const predictions = model.predict(testXs).arraySync();
 
-          for (let i = 30; i < 40; i++) actualData.push({ x: i, y: i ** 2 });
-          for (let i = 0; i < predictions.length; i++) predictedData.push({ x: 30 + i, y: predictions[i][0] });
+          for (let i = 100; i < 1000; i++) actualData.push({ x: i, y: i ** i });
+          for (let i = 0; i < predictions.length; i++) predictedData.push({ x: 100 + i, y: predictions[i][0] });
 
           resultinfo.innerHTML += "Model 1 Predictions: " + predictions + "<br>";
           chartNOW.update();  // Update chart after predictions are added
@@ -162,12 +162,12 @@
 
         model2.fit(xs2, ys2, { epochs: parseInt(document.getElementById("m2_NN-E_Count").value) }).then(() => {
           const testXsArray2 = [];
-          for (let i = 30; i < 40; i++) testXsArray2.push([i]);
+          for (let i = 100; i < 1000; i++) testXsArray2.push([i]);
           const testXs2 = tf.tensor2d(testXsArray2);
           const predictions2 = model2.predict(testXs2).arraySync();
 
-          for (let i = 30; i < 40; i++) actualData2.push({ x: i, y: i ** 2 });
-          for (let i = 0; i < predictions2.length; i++) predictedData2.push({ x: 30 + i, y: predictions2[i][0] });
+          for (let i = 100; i < 1000; i++) actualData2.push({ x: i, y: i ** i });
+          for (let i = 0; i < predictions2.length; i++) predictedData2.push({ x: 100 + i, y: predictions2[i][0] });
 
           resultinfo.innerHTML += "Model 2 Predictions: " + predictions2 + "<br>";
           chartNOW.update();  // Update chart after the second set of predictions
@@ -175,12 +175,12 @@
         
         model3.fit(xs3, ys3, { epochs: parseInt(document.getElementById("m3_NN-E_Count").value) }).then(() => {
           const testXsArray3 = [];
-          for (let i = 30; i < 40; i++) testXsArray3.push([i]);
+          for (let i = 100; i < 1000; i++) testXsArray3.push([i]);
           const testXs3 = tf.tensor2d(testXsArray3);
           const predictions3 = model3.predict(testXs3).arraySync();
 
-          for (let i = 30; i < 40; i++) actualData3.push({ x: i, y: i ** 2 });
-          for (let i = 0; i < predictions3.length; i++) predictedData3.push({ x: 30 + i, y: predictions3[i][0] });
+          for (let i = 100; i < 1000; i++) actualData3.push({ x: i, y: i ** i });
+          for (let i = 0; i < predictions3.length; i++) predictedData3.push({ x: 100 + i, y: predictions3[i][0] });
 
           resultinfo.innerHTML += "Model 3 Predictions: " + predictions3 + "<br>";
           chartNOW.update();  // Update chart after the third set of predictions
