@@ -19,15 +19,15 @@
   <br>
   Model 1 Neural Network Layer 1 Neuron Count <input id="m1_NNL-1_count" type="number" value="10"><br>
   Model 1 Neural Network Layer 2 Neuron Count <input id="m1_NNL-2_count" type="number" value="1"><br>
-  Model 1 Neural Network Epoch Count <input id="m1_NN-E_Count" type="number" value="1000"><br>
+  Model 1 Neural Network Epoch Count <input id="m1_NN-E_Count" type="number" value="500"><br>
   <br>
   Model 2 Neural Network Layer 1 Neuron Count <input id="m2_NNL-1_count" type="number" value="10"><br>
   Model 2 Neural Network Layer 2 Neuron Count <input id="m2_NNL-2_count" type="number" value="3"><br>
-  Model 2 Neural Network Epoch Count <input id="m2_NN-E_Count" type="number" value="1000"><br>
+  Model 2 Neural Network Epoch Count <input id="m2_NN-E_Count" type="number" value="500"><br>
   <br>
   Model 3 Neural Network Layer 1 Neuron Count <input id="m3_NNL-1_count" type="number" value="10"><br>
   Model 3 Neural Network Layer 2 Neuron Count <input id="m3_NNL-2_count" type="number" value="7"><br>
-  Model 3 Neural Network Epoch Count <input id="m3_NN-E_Count" type="number" value="1000"><br>
+  Model 3 Neural Network Epoch Count <input id="m3_NN-E_Count" type="number" value="500"><br>
 
   Start <input id="sub" type="submit">
   
@@ -149,11 +149,11 @@
         // Train the models and update chart
         model.fit(xs, ys, { epochs: parseInt(document.getElementById("m1_NN-E_Count").value) }).then(() => {
           const testXsArray = [];
-          for (let i = 100; i < 1000; i++) testXsArray.push([i]);
+          for (let i = 100; i < 500; i++) testXsArray.push([i]);
           const testXs = tf.tensor2d(testXsArray);
           const predictions = model.predict(testXs).arraySync();
 
-          for (let i = 100; i < 1000; i++) actualData.push({ x: i, y: i ** i });
+          for (let i = 100; i < 500; i++) actualData.push({ x: i, y: i ** i });
           for (let i = 0; i < predictions.length; i++) predictedData.push({ x: 100 + i, y: predictions[i][0] });
 
           resultinfo.innerHTML += "Model 1 Predictions: " + predictions + "<br>";
@@ -162,11 +162,11 @@
 
         model2.fit(xs2, ys2, { epochs: parseInt(document.getElementById("m2_NN-E_Count").value) }).then(() => {
           const testXsArray2 = [];
-          for (let i = 100; i < 1000; i++) testXsArray2.push([i]);
+          for (let i = 100; i < 500; i++) testXsArray2.push([i]);
           const testXs2 = tf.tensor2d(testXsArray2);
           const predictions2 = model2.predict(testXs2).arraySync();
 
-          for (let i = 100; i < 1000; i++) actualData2.push({ x: i, y: i ** i });
+          for (let i = 100; i < 500; i++) actualData2.push({ x: i, y: i ** i });
           for (let i = 0; i < predictions2.length; i++) predictedData2.push({ x: 100 + i, y: predictions2[i][0] });
 
           resultinfo.innerHTML += "Model 2 Predictions: " + predictions2 + "<br>";
@@ -175,11 +175,11 @@
         
         model3.fit(xs3, ys3, { epochs: parseInt(document.getElementById("m3_NN-E_Count").value) }).then(() => {
           const testXsArray3 = [];
-          for (let i = 100; i < 1000; i++) testXsArray3.push([i]);
+          for (let i = 100; i < 500; i++) testXsArray3.push([i]);
           const testXs3 = tf.tensor2d(testXsArray3);
           const predictions3 = model3.predict(testXs3).arraySync();
 
-          for (let i = 100; i < 1000; i++) actualData3.push({ x: i, y: i ** i });
+          for (let i = 100; i < 500; i++) actualData3.push({ x: i, y: i ** i });
           for (let i = 0; i < predictions3.length; i++) predictedData3.push({ x: 100 + i, y: predictions3[i][0] });
 
           resultinfo.innerHTML += "Model 3 Predictions: " + predictions3 + "<br>";
