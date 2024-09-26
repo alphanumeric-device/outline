@@ -153,7 +153,7 @@
           const testXs = tf.tensor2d(testXsArray);
           const predictions = model.predict(testXs).arraySync();
 
-          for (let i = 50; i < 75; i++) actualData.push({ x: i, y: i ** i });
+          for (let i = 50; i < 75; i++) actualData.push({ x: i, y: i ** 2 });
           for (let i = 0; i < predictions.length; i++) predictedData.push({ x: 50+i, y: predictions[i][0] });
 
           resultinfo.innerHTML += "Model 1 Predictions: " + predictions + "<br>";
@@ -166,8 +166,8 @@
           const testXs2 = tf.tensor2d(testXsArray2);
           const predictions2 = model2.predict(testXs2).arraySync();
 
-          for (let i = 50; i < 75; i++) actualData2.push({ x: i, y: i ** i });
-          for (let i = 0; i < predictions2.length; i++) predictedData2.push({ x: 50 +1, y: predictions2[i][0] });
+          for (let i = 50; i < 75; i++) actualData2.push({ x: i, y: i ** 2 });
+          for (let i = 0; i < predictions2.length; i++) predictedData2.push({ x: 50 +i, y: predictions2[i][0] });
 
           resultinfo.innerHTML += "Model 2 Predictions: " + predictions2 + "<br>";
           chartNOW.update();  // Update chart after the second set of predictions
@@ -179,8 +179,8 @@
           const testXs3 = tf.tensor2d(testXsArray3);
           const predictions3 = model3.predict(testXs3).arraySync();
 
-          for (let i = 50; i < 75; i++) actualData3.push({ x: i, y: i ** i });
-          for (let i = 0; i < predictions3.length; i++) predictedData3.push({ x: 50+1 , y: predictions3[i][0] });
+          for (let i = 50; i < 75; i++) actualData3.push({ x: i, y: i ** 2 });
+          for (let i = 0; i < predictions3.length; i++) predictedData3.push({ x: 50+i , y: predictions3[i][0] });
 
           resultinfo.innerHTML += "Model 3 Predictions: " + predictions3 + "<br>";
           chartNOW.update();  // Update chart after the third set of predictions
