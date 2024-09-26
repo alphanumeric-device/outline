@@ -147,7 +147,7 @@
         });
 
         // Train the models and update chart
-        model.fit(xs, ys, { epochs: parseInt(document.getElementById("m1_NN-E_count").value) }).then(() => {
+        model.fit(xs, ys, { epochs: parseInt(document.getElementById("m1_NN-E_Count").value) }).then(() => {
           const testXsArray = [];
           for (let i = 30; i < 40; i++) testXsArray.push([i]);
           const testXs = tf.tensor2d(testXsArray);
@@ -160,7 +160,7 @@
           chartNOW.update();  // Update chart after predictions are added
         });
 
-        model2.fit(xs2, ys2, { epochs: parseInt(document.getElementById("m2_NN-E_count").value) }).then(() => {
+        model2.fit(xs2, ys2, { epochs: parseInt(document.getElementById("m2_NN-E_Count").value) }).then(() => {
           const testXsArray2 = [];
           for (let i = 30; i < 40; i++) testXsArray2.push([i]);
           const testXs2 = tf.tensor2d(testXsArray2);
@@ -173,7 +173,7 @@
           chartNOW.update();  // Update chart after the second set of predictions
         });
         
-        model3.fit(xs3, ys3, { epochs: parseInt(document.getElementById("m3_NN-E_count").value) }).then(() => {
+        model3.fit(xs3, ys3, { epochs: parseInt(document.getElementById("m3_NN-E_Count").value) }).then(() => {
           const testXsArray3 = [];
           for (let i = 30; i < 40; i++) testXsArray3.push([i]);
           const testXs3 = tf.tensor2d(testXsArray3);
