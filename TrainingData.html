@@ -32,6 +32,7 @@
   <p id="resultinfo"></p>
   <script>
     document.getElementById('sub').onclick = function(){
+      
     try {
       // Define models
       const model = tf.sequential();
@@ -153,7 +154,7 @@
       };
 
       const ctx = document.getElementById('priceChart').getContext('2d');
-      const chartNOW = new Chart(ctx, {
+      var chartNOW = new Chart(ctx, {
         type: 'scatter',
         data: chartData,
         options: {
