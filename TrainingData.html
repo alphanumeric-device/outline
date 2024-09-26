@@ -19,12 +19,15 @@
   <br>
   Model 1 Neural Network Layer 1 Neuron Count <input id="m1_NNL-1_count" type="number" value="10"><br>
   Model 1 Neural Network Layer 2 Neuron Count <input id="m1_NNL-2_count" type="number" value="1"><br>
+  Model 1 Neural Network Epoch Count <input id="m1_NN-E_Count" type="number" value="1000"><br>
   <br>
   Model 2 Neural Network Layer 1 Neuron Count <input id="m2_NNL-1_count" type="number" value="10"><br>
   Model 2 Neural Network Layer 2 Neuron Count <input id="m2_NNL-2_count" type="number" value="3"><br>
+  Model 2 Neural Network Epoch Count <input id="m2_NN-E_Count" type="number" value="1000"><br>
   <br>
   Model 3 Neural Network Layer 1 Neuron Count <input id="m3_NNL-1_count" type="number" value="10"><br>
   Model 3 Neural Network Layer 2 Neuron Count <input id="m3_NNL-2_count" type="number" value="7"><br>
+  Model 3 Neural Network Epoch Count <input id="m3_NN-E_Count" type="number" value="1000"><br>
 
   Start <input id="sub" type="submit">
   
@@ -144,7 +147,7 @@
         });
 
         // Train the models and update chart
-        model.fit(xs, ys, { epochs: 1000 }).then(() => {
+        model.fit(xs, ys, { epochs: parseInt(document.getElementById("m1_NN-E_count").value) }).then(() => {
           const testXsArray = [];
           for (let i = 30; i < 40; i++) testXsArray.push([i]);
           const testXs = tf.tensor2d(testXsArray);
@@ -157,7 +160,7 @@
           chartNOW.update();  // Update chart after predictions are added
         });
 
-        model2.fit(xs2, ys2, { epochs: 1000 }).then(() => {
+        model2.fit(xs2, ys2, { epochs: parseInt(document.getElementById("m2_NN-E_count").value) }).then(() => {
           const testXsArray2 = [];
           for (let i = 30; i < 40; i++) testXsArray2.push([i]);
           const testXs2 = tf.tensor2d(testXsArray2);
@@ -170,7 +173,7 @@
           chartNOW.update();  // Update chart after the second set of predictions
         });
         
-        model3.fit(xs3, ys3, { epochs: 1000 }).then(() => {
+        model3.fit(xs3, ys3, { epochs: parseInt(document.getElementById("m3_NN-E_count").value) }).then(() => {
           const testXsArray3 = [];
           for (let i = 30; i < 40; i++) testXsArray3.push([i]);
           const testXs3 = tf.tensor2d(testXsArray3);
