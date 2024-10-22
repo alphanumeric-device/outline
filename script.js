@@ -59,23 +59,23 @@ function links_command(){ //inject all info into link
       targets[0][i].setAttribute('id', link);
     }
   //side nav
-  //  /*
-    for (var i = 0; i < links.SideNav.length; i++) {//input link
-      var link = links.SideNav[i].href;
-      console.log(targets[1][i])
-      targets[1][i].href = link;
-      console.log(targets[1][i])
-    }
+//   //  
+//     for (var i = 0; i < links.SideNav.length; i++) {//input link
+//       var link = links.SideNav[i].href;
+//       console.log(targets[1][i])
+//       targets[1][i].href = link;
+//       console.log(targets[1][i])
+//     }
 
-    for (var i = 0; i < links.SideNav.length; i++) {//input content
-      var link = links.SideNav[i].content;
-      targets[1][i].innerHTML = link;
-    }
-    for (var i = 0; i < links.SideNav.length; i++) {//input id
-      var link = links.SideNav[i].id;
-      targets[1][i].setAttribute('id', link);
-    }
-//*/
+//     for (var i = 0; i < links.SideNav.length; i++) {//input content
+//       var link = links.SideNav[i].content;
+//       targets[1][i].innerHTML = link;
+//     }
+//     for (var i = 0; i < links.SideNav.length; i++) {//input id
+//       var link = links.SideNav[i].id;
+//       targets[1][i].setAttribute('id', link);
+//     }
+// //*/
   } 
   //   else {
   //     // h > w
